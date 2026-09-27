@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>momentarr</Name>
+  <Repository>ghcr.io/drumandbytes/momentarr:latest</Repository>
+  <Registry>https://github.com/drumandbytes/momentarr/pkgs/container/momentarr</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/drumandbytes/momentarr/issues</Support>
+  <Project>https://github.com/drumandbytes/momentarr</Project>
+  <Overview>Caching, serialising proxy for FlareSolverr-compatible Cloudflare solvers. Point Prowlarr/Jackett at momentarr instead of the solver: repeat requests to a solved site are served from the cached cf_clearance cookie over plain HTTP (~0.1s, no browser), and solves run one at a time so browsers never stack. Needs a solver alongside it: install Byparr or FlareSolverr and set Backend URL to it. Both must share the same outgoing IP (same host, or both behind the same VPN container).</Overview>
+  <Category>Network:Proxy Downloaders:</Category>
+  <WebUI></WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/momentarr.xml</TemplateURL>
+  <Icon>https://avatars.githubusercontent.com/u/217451159?s=256</Icon>
+  <ExtraParams></ExtraParams>
+  <Config Name="Port" Target="8191" Default="8191" Mode="tcp" Description="FlareSolverr API port. Use http://[IP]:8191/ as the FlareSolverr proxy host in Prowlarr." Type="Port" Display="always" Required="true" Mask="false">8191</Config>
+  <Config Name="Backend URL" Target="BACKEND_URL" Default="http://192.168.1.10:8192" Description="URL of the real solver (Byparr or FlareSolverr)." Type="Variable" Display="always" Required="true" Mask="false">http://192.168.1.10:8192</Config>
+  <Config Name="Backend concurrency" Target="BACKEND_CONCURRENCY" Default="1" Description="Solves in flight at once. 1 keeps a single browser." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="Cookie TTL (hours)" Target="COOKIE_TTL_HOURS" Default="720" Description="Upper bound for cached clearances; the cookie's own expiry wins if sooner." Type="Variable" Display="advanced" Required="false" Mask="false">720</Config>
+  <Config Name="Log level" Target="LOG_LEVEL" Default="info" Description="debug, info, warn or error." Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
+</Container>

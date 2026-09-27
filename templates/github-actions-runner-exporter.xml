@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>github-actions-runner-exporter</Name>
+  <Repository>ghcr.io/drumandbytes/github-actions-runner-exporter:latest</Repository>
+  <Registry>https://github.com/drumandbytes/github-actions-runner-exporter/pkgs/container/github-actions-runner-exporter</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/drumandbytes/github-actions-runner-exporter/issues</Support>
+  <Project>https://github.com/drumandbytes/github-actions-runner-exporter</Project>
+  <Overview>Prometheus exporter for GitHub Actions self-hosted runner status (online/busy), plus repo CI health, PR counts and Dependabot alerts, polled from the org API on a rate-limit-friendly cache.</Overview>
+  <Category>Tools:Utilities Network:Management</Category>
+  <WebUI>http://[IP]:[PORT:9222]/metrics</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/github-actions-runner-exporter.xml</TemplateURL>
+  <Icon>https://avatars.githubusercontent.com/u/217451159?s=256</Icon>
+  <ExtraParams></ExtraParams>
+  <Config Name="Port" Target="9222" Default="9222" Mode="tcp" Description="Metrics port (/metrics, /healthz)." Type="Port" Display="always" Required="true" Mask="false">9222</Config>
+  <Config Name="GitHub org" Target="GITHUB_ORG" Default="" Description="Organization whose runners to watch." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="GitHub token" Target="GITHUB_TOKEN" Default="" Description="Token with read access to org self-hosted runners; see the README." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+</Container>

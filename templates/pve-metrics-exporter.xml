@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>pve-metrics-exporter</Name>
+  <Repository>ghcr.io/drumandbytes/pve-metrics-exporter:latest</Repository>
+  <Registry>https://github.com/drumandbytes/pve-metrics-exporter/pkgs/container/pve-metrics-exporter</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/drumandbytes/pve-metrics-exporter/issues</Support>
+  <Project>https://github.com/drumandbytes/pve-metrics-exporter</Project>
+  <Overview>Proxmox VE exporter for Prometheus and Glance: node, VM and container resource metrics plus the CPU/GPU/NVMe hardware temperatures most Proxmox exporters skip. Serves /metrics for Prometheus and /api/summary for Glance from one shared cache.</Overview>
+  <Category>Tools:System Network:Management</Category>
+  <WebUI>http://[IP]:[PORT:9221]/metrics</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/pve-metrics-exporter.xml</TemplateURL>
+  <Icon>https://avatars.githubusercontent.com/u/217451159?s=256</Icon>
+  <ExtraParams></ExtraParams>
+  <Config Name="Port" Target="9221" Default="9221" Mode="tcp" Description="Metrics port (/metrics and /api/summary)." Type="Port" Display="always" Required="true" Mask="false">9221</Config>
+  <Config Name="Proxmox URL" Target="PROXMOX_URL" Default="https://192.168.1.10:8006" Description="Base URL of the Proxmox API." Type="Variable" Display="always" Required="true" Mask="false">https://192.168.1.10:8006</Config>
+  <Config Name="Proxmox API token" Target="PROXMOX_TOKEN" Default="" Description="Full Authorization header value: PVEAPIToken=user@pve!tokenid=uuid" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="Skip TLS verify" Target="PROXMOX_INSECURE_SKIP_VERIFY" Default="true" Description="Proxmox ships a self-signed certificate; set false once replaced." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Temperature unit" Target="TEMPERATURE_UNIT" Default="celsius" Description="celsius or fahrenheit (affects /api/summary only)." Type="Variable" Display="advanced" Required="false" Mask="false">celsius</Config>
+</Container>

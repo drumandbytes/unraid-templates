@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>paddock-api</Name>
+  <Repository>ghcr.io/drumandbytes/paddock-api:latest</Repository>
+  <Registry>https://github.com/drumandbytes/paddock-api/pkgs/container/paddock-api</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/drumandbytes/paddock-api/issues</Support>
+  <Project>https://github.com/drumandbytes/paddock-api</Project>
+  <Overview>Self-hosted F1 data API for Glance dashboards: session times in your own timezone, live standings, track maps and tyre-stint data, cached around the race calendar instead of a fixed TTL.</Overview>
+  <Category>HomeAutomation: Tools:Utilities</Category>
+  <WebUI></WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/paddock-api.xml</TemplateURL>
+  <Icon>https://avatars.githubusercontent.com/u/217451159?s=256</Icon>
+  <ExtraParams></ExtraParams>
+  <Config Name="Port" Target="4463" Default="4463" Mode="tcp" Description="API port for your Glance custom-api widgets." Type="Port" Display="always" Required="true" Mask="false">4463</Config>
+  <Config Name="Timezone" Target="TIMEZONE" Default="Europe/London" Description="IANA timezone every timestamp is converted to." Type="Variable" Display="always" Required="true" Mask="false">Europe/London</Config>
+  <Config Name="Track colour" Target="TRACK_COLOUR" Default="#e5d486" Description="Hex colour for the track-map line." Type="Variable" Display="always" Required="true" Mask="false">#e5d486</Config>
+  <Config Name="Event detail" Target="EVENT_DETAIL" Default="main" Description="main (quali + races), race, or detailed (includes practice)." Type="Variable" Display="advanced" Required="false" Mask="false">main</Config>
+  <Config Name="Cache" Target="/data" Default="/mnt/user/appdata/paddock-api" Mode="rw" Description="Finished-session data, kept across restarts." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/paddock-api</Config>
+</Container>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>nordvpn</Name>
+  <Repository>ghcr.io/drumandbytes/nordvpn:latest</Repository>
+  <Registry>https://github.com/drumandbytes/nordvpn/pkgs/container/nordvpn</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/drumandbytes/nordvpn/issues</Support>
+  <Project>https://github.com/drumandbytes/nordvpn</Project>
+  <Overview>The official NordVPN Linux client on distroless: no shell, rebuilt when upstream changes. Use it as a VPN network for other containers (Network Type: Container) with kill switch and allowlist set from env, or as a Meshnet node. Needs NET_ADMIN, NET_RAW and /dev/net/tun (set in Extra Parameters).</Overview>
+  <Category>Network:VPN</Category>
+  <WebUI></WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/nordvpn.xml</TemplateURL>
+  <Icon>https://avatars.githubusercontent.com/u/217451159?s=256</Icon>
+  <ExtraParams>--cap-add=NET_ADMIN --cap-add=NET_RAW --device=/dev/net/tun</ExtraParams>
+  <Config Name="Access token" Target="NORDVPN_TOKEN" Default="" Description="NordVPN account → Manual setup → Access token." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="Connect" Target="NORDVPN_CONNECT" Default="" Description="Country/city/server/group, anything `nordvpn connect` accepts. Empty = recommended server." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Settings" Target="NORDVPN_SET" Default="killswitch on; technology nordlynx" Description="; separated, each passed to `nordvpn set`." Type="Variable" Display="always" Required="false" Mask="false">killswitch on; technology nordlynx</Config>
+  <Config Name="Allowlist" Target="NORDVPN_ALLOWLIST" Default="subnet 192.168.0.0/16" Description="; separated, each passed to `nordvpn allowlist add`. Replaces the allowlist each start." Type="Variable" Display="always" Required="false" Mask="false">subnet 192.168.0.0/16</Config>
+  <Config Name="Meshnet" Target="NORDVPN_MESHNET" Default="" Description="on to enable Meshnet." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="State" Target="/var/lib/nordvpn" Default="/mnt/user/appdata/nordvpn" Mode="rw" Description="Login and Meshnet identity across restarts." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/nordvpn</Config>
+</Container>
