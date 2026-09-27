@@ -11,7 +11,7 @@
   <Category>Tools:Utilities Network:Management</Category>
   <WebUI>http://[IP]:[PORT:9222]/metrics</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/github-actions-runner-exporter.xml</TemplateURL>
-  <Icon>https://avatars.githubusercontent.com/u/217451159?s=256</Icon>
+  <Icon>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/icons/github-actions-runner-exporter.png</Icon>
   <ExtraParams></ExtraParams>
   <Config Name="Port" Target="9222" Default="9222" Mode="tcp" Description="Metrics port (/metrics, /healthz)." Type="Port" Display="always" Required="true" Mask="false">9222</Config>
   <Config Name="GitHub org" Target="GITHUB_ORG" Default="" Description="Organization whose runners to watch." Type="Variable" Display="always" Required="true" Mask="false"></Config>

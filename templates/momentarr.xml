@@ -11,7 +11,7 @@
   <Category>Network:Proxy Downloaders:</Category>
   <WebUI></WebUI>
   <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/momentarr.xml</TemplateURL>
-  <Icon>https://avatars.githubusercontent.com/u/217451159?s=256</Icon>
+  <Icon>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/icons/momentarr.png</Icon>
   <ExtraParams></ExtraParams>
   <Config Name="Port" Target="8191" Default="8191" Mode="tcp" Description="FlareSolverr API port. Use http://[IP]:8191/ as the FlareSolverr proxy host in Prowlarr." Type="Port" Display="always" Required="true" Mask="false">8191</Config>
   <Config Name="Backend URL" Target="BACKEND_URL" Default="http://192.168.1.10:8192" Description="URL of the real solver (Byparr or FlareSolverr)." Type="Variable" Display="always" Required="true" Mask="false">http://192.168.1.10:8192</Config>

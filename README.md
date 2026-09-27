@@ -12,7 +12,7 @@ Unraid Community Applications templates for the [Drumandbytes](https://github.co
 | [github-actions-runner-exporter](https://github.com/drumandbytes/github-actions-runner-exporter) | Prometheus exporter for self-hosted GitHub Actions runners |
 | [nordvpn](https://github.com/drumandbytes/nordvpn) | The official NordVPN client, distroless, as a VPN network for other containers |
 
-Search for them in the Unraid **Apps** tab. Before they're listed there, you can add a template by URL:
+Search for them in the Unraid **Apps** tab. Icons are generated from the SVGs in [`icons/`](icons). Before they're listed there, you can add a template by URL:
 Docker → Add Container → Template → paste the raw URL of a file in [`templates/`](templates).
 
 Problems with an app itself go to that app's repo; problems with a template go here.
