@@ -1,0 +1,48 @@
+name: Validate
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  templates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      # Unraid silently drops a template it can't parse, so fail here instead.
+      - name: Templates are well-formed and each has its icon
+        run: |
+          sudo apt-get install -y -qq libxml2-utils >/dev/null
+          status=0
+          for f in templates/*.xml; do
+            name=$(basename "$f" .xml)
+            xmllint --noout "$f" || status=1
+            [ -f "icons/$name.png" ] || { echo "missing icons/$name.png"; status=1; }
+            grep -q "<TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/$name.xml</TemplateURL>" "$f" \
+              || { echo "$f: TemplateURL doesn't point at itself"; status=1; }
+          done
+          exit $status
+
+  zizmor:
+    uses: drumandbytes/reusable-actions/.github/workflows/zizmor.yml@v1
+
+  # The one name the org ruleset requires.
+  required-checks-passed:
+    name: Required checks passed
+    runs-on: ubuntu-latest
+    needs: [templates, zizmor]
+    if: always()
+    steps:
+      - if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: exit 1
