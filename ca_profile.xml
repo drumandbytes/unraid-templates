@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>Container templates for the Drumandbytes open-source homelab tools: momentarr (caching, one-at-a-time proxy in front of Byparr/FlareSolverr for Prowlarr), pve-metrics-exporter (Proxmox VE metrics and hardware temperatures for Prometheus and Glance), paddock-api (F1 data API for Glance dashboards), github-actions-runner-exporter (Prometheus metrics for self-hosted GitHub Actions runners) and nordvpn (the official NordVPN client, distroless, as a VPN network for other containers). Each image is built and released from its own GitHub repository. For help, open an issue on that app's repository; template problems go to this repository's issues.</Profile>
+  <Icon>https://avatars.githubusercontent.com/u/217451159?s=256</Icon>
+  <WebPage>https://github.com/drumandbytes/unraid-templates</WebPage>
+</CommunityApplications>
