@@ -23,11 +23,10 @@ jobs:
       # Unraid silently drops a template it can't parse, so fail here instead.
       - name: Templates are well-formed and each has its icon
         run: |
-          sudo apt-get install -y -qq libxml2-utils >/dev/null
           status=0
           for f in templates/*.xml; do
             name=$(basename "$f" .xml)
-            xmllint --noout "$f" || status=1
+            python3 -c 'import sys, xml.dom.minidom; xml.dom.minidom.parse(sys.argv[1])' "$f" || status=1
             [ -f "icons/$name.png" ] || { echo "missing icons/$name.png"; status=1; }
             grep -q "<TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/$name.xml</TemplateURL>" "$f" \
               || { echo "$f: TemplateURL doesn't point at itself"; status=1; }
