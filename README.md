@@ -1,6 +1,6 @@
 # unraid-templates
 
-[More Drumandbytes projects](https://drumandbytes.com/projects/)
+[More Drumandbytes projects](https://drumandbytes.com/projects/?ref=unraid-templates-readme)
 
 Unraid Community Applications templates for the [Drumandbytes](https://github.com/drumandbytes) container images.
 
