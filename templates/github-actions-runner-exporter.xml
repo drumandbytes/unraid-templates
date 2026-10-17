@@ -7,13 +7,14 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/drumandbytes/github-actions-runner-exporter/issues</Support>
   <Project>https://github.com/drumandbytes/github-actions-runner-exporter</Project>
-  <Overview>Prometheus exporter for GitHub Actions self-hosted runner status (online/busy), plus repo CI health, PR counts and Dependabot alerts, polled from the org API on a rate-limit-friendly cache.</Overview>
+  <Overview>Prometheus exporter for GitHub Actions self-hosted runner status (online/busy), plus repo CI health, PR counts, Dependabot alerts and job run/queue time history, polled from the org API on a rate-limit-friendly cache. Comes with an importable Grafana dashboard.</Overview>
   <Category>Tools:Utilities Network:Management</Category>
+  <ExtraSearchTerms>prometheus grafana github actions runner metrics exporter ci dependabot</ExtraSearchTerms>
   <WebUI>http://[IP]:[PORT:9222]/metrics</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/github-actions-runner-exporter.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/icons/github-actions-runner-exporter.png</Icon>
   <ExtraParams></ExtraParams>
   <Config Name="Port" Target="9222" Default="9222" Mode="tcp" Description="Metrics port (/metrics, /healthz)." Type="Port" Display="always" Required="true" Mask="false">9222</Config>
   <Config Name="GitHub org" Target="GITHUB_ORG" Default="" Description="Organization whose runners to watch." Type="Variable" Display="always" Required="true" Mask="false"></Config>
-  <Config Name="GitHub token" Target="GITHUB_TOKEN" Default="" Description="Token with read access to org self-hosted runners; see the README." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="GitHub token" Target="GITHUB_TOKEN" Default="" Description="Fine-grained token: All repositories, read on Pull requests, Actions and Dependabot alerts, plus access to the org's self-hosted runners. See the README, Token permissions." Type="Variable" Display="always" Required="true" Mask="true"></Config>
 </Container>
