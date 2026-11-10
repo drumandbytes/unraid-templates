@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>delistd</Name>
+  <Repository>ghcr.io/drumandbytes/delistd:latest</Repository>
+  <Registry>https://github.com/drumandbytes/delistd/pkgs/container/delistd</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/drumandbytes/delistd/issues</Support>
+  <Project>https://github.com/drumandbytes/delistd</Project>
+  <Overview>Sends GDPR and CCPA data removal requests to 700+ data brokers from your own mailbox, tracks their replies over IMAP and re-sends on a schedule. Everything stays in a local SQLite database; there is no cloud service and no telemetry. IMPORTANT: the web UI has no login and holds your mail credentials, so keep it on your LAN and never forward its port to the internet. Formerly named Eraser. Browser form-filling (the fill command) needs a separate Chromium container; see the project's Docker docs.</Overview>
+  <Category>Tools:Utilities Productivity:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/delistd.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/icons/delistd.png</Icon>
+  <ExtraParams>--user 99:100 --read-only --cap-drop=ALL --security-opt=no-new-privileges:true</ExtraParams>
+  <Config Name="Web UI port" Target="8080" Default="8080" Mode="tcp" Description="Port of the web UI. It has no login: keep it on your LAN." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="Data" Target="/home/nonroot/.eraser" Default="/mnt/user/appdata/delistd" Mode="rw" Description="Config, history database, broker list and the machine ID that keys your encrypted mail passwords. Keep it across updates. The folder name inside the container is the pre-rename one on purpose." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/delistd</Config>
+  <Config Name="Timezone" Target="TZ" Default="UTC" Description="IANA timezone, e.g. Europe/Berlin, so times in the UI match your clock." Type="Variable" Display="always" Required="false" Mask="false">UTC</Config>
+  <Config Name="Chrome URL" Target="DELISTD_CHROME_URL" Default="" Description="Optional. Chrome DevTools endpoint of a separate Chromium container, e.g. http://192.168.1.10:9222, for browser form-filling." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+</Container>
