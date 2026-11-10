@@ -12,10 +12,10 @@
   <WebUI></WebUI>
   <TemplateURL>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/templates/paddock-api.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/drumandbytes/unraid-templates/main/icons/paddock-api.png</Icon>
-  <ExtraParams></ExtraParams>
+  <ExtraParams>--user 99:100</ExtraParams>
   <Config Name="Port" Target="4463" Default="4463" Mode="tcp" Description="API port for your Glance custom-api widgets." Type="Port" Display="always" Required="true" Mask="false">4463</Config>
   <Config Name="Timezone" Target="TIMEZONE" Default="Europe/London" Description="IANA timezone every timestamp is converted to." Type="Variable" Display="always" Required="true" Mask="false">Europe/London</Config>
   <Config Name="Track colour" Target="TRACK_COLOUR" Default="#e5d486" Description="Hex colour for the track-map line." Type="Variable" Display="always" Required="true" Mask="false">#e5d486</Config>
   <Config Name="Event detail" Target="EVENT_DETAIL" Default="main" Description="main (quali + races), race, or detailed (includes practice)." Type="Variable" Display="advanced" Required="false" Mask="false">main</Config>
-  <Config Name="Cache" Target="/data" Default="/mnt/user/appdata/paddock-api" Mode="rw" Description="Finished-session data, kept across restarts." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/paddock-api</Config>
+  <Config Name="Cache" Target="/data" Default="/mnt/user/appdata/paddock-api" Mode="rw" Description="Finished-session data, kept across restarts. The container runs as user 99 (nobody), so this folder must be writable by it." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/paddock-api</Config>
 </Container>
